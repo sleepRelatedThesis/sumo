@@ -29,7 +29,9 @@ Fixed using *patchelf*, locate the file *libtorch_cpu.so*, and do:
 sudo patchelf --clear-execstack <path/to/libtorch_cpu.so>
 ```
 
-Notes:
+### Notes:
+
     - removed *matplotlib* as is was not compiling, and showing segmentation fault.
+
     - added *six* package, it was not in the requirements.txt but was needed.
 
