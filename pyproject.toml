@@ -3,13 +3,14 @@ name = "sumo"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.9.10"
+requires-python = "==3.9.10"
 dependencies = [
-    "matplotlib~=3.4.3",
     "numpy~=1.19.2",
+    "pyedflib>=0.1.42",
     "pytorch-lightning~=1.5.4",
     "pyyaml~=6.0",
     "scikit-learn~=0.24.1",
     "scipy~=1.6.2",
+    "six>=1.17.0",
     "torch~=1.10.0",
 ]

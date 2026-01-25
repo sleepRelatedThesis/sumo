@@ -1,4 +1,3 @@
-import matplotlib.pyplot as plt
 import numpy as np
 import torch
 import torch.nn.functional as F
@@ -56,22 +55,3 @@ def calculate_test_metrics(model, dataloaders, overlap_thresholds):
     f1s.append(f1)
 
     return precisions, recalls, f1s
-
-
-def plot_metrics(precision, recall, f1, overlap_thresholds):
-    fig, ax = plt.subplots(figsize=(4, 5))
-
-    ax.set_xlim([0, 1])
-    ax.set_ylim([0, 1])
-    ax.set_xticks(np.arange(0, 1.1, 0.1))
-    ax.set_yticks(np.arange(0, 1.1, 0.1))
-    ax.grid()
-
-    ax.set_xlabel('Overlap Threshold')
-    ax.plot(overlap_thresholds, precision, label='precision')
-    ax.plot(overlap_thresholds, recall, label='recall')
-    ax.plot(overlap_thresholds, f1, label='f1')
-    ax.legend()
-
-    fig.tight_layout()
-    fig.show()
