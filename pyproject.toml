@@ -14,3 +14,9 @@ dependencies = [
     "six>=1.17.0",
     "torch~=1.10.0",
 ]
+
+[tool.XXX]
+entrypoint = "detect.detect_spindles_core"
+task_type = "spindle_detector"
+display_name = "Fake Detector"
+description = "A fake detector with configuration file."

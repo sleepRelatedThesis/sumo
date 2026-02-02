@@ -8,7 +8,6 @@ from scipy.signal import resample_poly
 from scipy.stats import zscore
 from torch.utils.data import Dataset, DataLoader
 
-from DetectionConfig.detect import CustomSpindleResult
 from sumo.config import Config
 from sumo.data import spindle_vect_to_indices
 from sumo.model import SUMO

@@ -6,7 +6,6 @@ class DetectionInstructions:
     detection_id: str
     edf_absolute_path: str
     channel: str
-    configuration: dict
 
 
 @dataclass
@@ -31,7 +30,7 @@ def detect_spindles(dto: DetectionInstructions) -> list[CustomSpindleResult]:
         edf_reader.getSignalLabels().index(dto.channel)
     ]
 
-    from DetectionConfig.sumo_infrastructure import SumoDetector
+    from sumo_infrastructure import SumoDetector
 
     detector = SumoDetector()
     results = detector.detect_segments(sampling_frequency, signal_data)
