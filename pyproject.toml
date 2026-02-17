@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = "==3.9.10"
 dependencies = [
     "numpy~=1.19.2",
+    "pydantic>=2.12.5",
     "pyedflib>=0.1.42",
     "pytorch-lightning~=1.5.4",
     "pyyaml~=6.0",
@@ -15,8 +16,7 @@ dependencies = [
     "torch~=1.10.0",
 ]
 
-[tool.XXX]
-entrypoint = "detect.detect_spindles_core"
-task_type = "spindle_detector"
-display_name = "Fake Detector"
-description = "A fake detector with configuration file."
+[tool.RepoTasks]
+tasks_implementations = [
+    { task_type = "single_channel_spindle_detector", implementation_name = "sumo_detector", entrypoint = "detect.detect_spindles" },
+]

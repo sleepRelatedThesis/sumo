@@ -68,13 +68,11 @@ class SimpleDataset(Dataset):
 class SumoDetector:
     def __init__(self):
         script_dir = Path(__file__).parent
-        model_path = script_dir.parent / "output" / "final.ckpt"
+        model_path = script_dir / "output" / "final.ckpt"
         print(f"Loading model from: {model_path}")
         self.model = get_model(model_path)
 
-    def detect_segments(
-        self, sampling_frequency: int, data
-    ) -> list[tuple[int, int]]:
+    def detect_segments(self, sampling_frequency: int, data) -> list[tuple[int, int]]:
         sf = sampling_frequency
         resample_rate = 100
         signal_down = downsample(data, sf, resample_rate)
@@ -84,7 +82,9 @@ class SumoDetector:
         predictions = trainer.predict(self.model, dataloader)
         if not predictions:
             raise ValueError("No predictions were made by the model.")
-        spindle_segments = [] # list of (start, end) index, (not seconds) in original signal sampling frequency.
+        spindle_segments = (
+            []
+        )  # list of (start, end) index, (not seconds) in original signal sampling frequency.
         for pred in predictions:
             spindle_vect = pred[0].numpy()
             spindles = spindle_vect_to_indices(spindle_vect) / resample_rate
